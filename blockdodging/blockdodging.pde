@@ -18,7 +18,14 @@ float gameSpeed = 2.0;
 float playerX = 0;
 Box[] boxes = new Box[NUM_BOXES];
 boolean shouldCaptureFace = true;
+boolean faceCaptured = false;
 boolean shouldRunGame = false;
+
+// states:
+// GAME_SPLASH
+// PLAYER_SETTINGS
+// LEVEL_SPLASH
+// 
 
 class Box {
   int x, z; 
@@ -44,8 +51,9 @@ class Box {
 }
 
 void setup() {
-  fullScreen(P3D);
-  
+  size(1000, 800, P3D);
+  //fullScreen(P3D);
+  frameRate(30);
   background(255,255,255);
   smooth();
   noStroke();
@@ -56,8 +64,9 @@ void setup() {
 void draw() {
   if (shouldCaptureFace) {
     captureFace();
-  }
-  if (shouldRunGame) {
+  } else if (faceCaptured) {
+    trackFace();
+  } else if (shouldRunGame) {
     renderLevel();
   }
 }
