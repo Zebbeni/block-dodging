@@ -17,16 +17,6 @@ int faceX = 0;
 int faceY = 0;
 int hueTolerance = 2;
 
-class Rectangle {
-  int x, y, w, h;
-  Rectangle(int x, int y, int w, int h) {
-    this.x = x;
-    this.y = y;
-    this.w = w;
-    this.h = h;
-  }
-}
-
 void initializeCaptureScreen() {
   video = new Capture(this, int(height * 1.3333), height);
   video.start();
